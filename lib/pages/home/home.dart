@@ -1,4 +1,6 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'dart:js';
 
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       key: scaffoldKey,
       appBar: TopNavigationBar(context, scaffoldKey),
@@ -18,10 +22,33 @@ class Home extends StatelessWidget {
         child: SideNavigationBar(),
       ),
       body: Container(
-        child: Center(
-          child: Text("HOME"),
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              PageText(),
+              PageText(),
+              PageText(),
+              PageText(),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class PageText extends StatelessWidget {
+  const PageText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 300,
+      child: Text("HOME"),
     );
   }
 }

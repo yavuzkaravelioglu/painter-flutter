@@ -17,9 +17,9 @@ class ContactUs extends StatelessWidget {
       drawer: Drawer(
         child: SideNavigationBar(),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Center(
-          child: Text("Contact Us"),
+          child: Text("CONTACT US"),
         ),
       ),
     );
