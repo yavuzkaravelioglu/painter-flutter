@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:paint_burak/pages/contact_us/contact_us.dart';
 
 import '../../pages/about_us/about_us.dart';
@@ -15,7 +16,7 @@ class NavbarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(navbarItemRoute);
+        context.goNamed(navbarItemName);
       },
       onHover: (value) {},
       child: Container(

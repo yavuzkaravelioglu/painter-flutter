@@ -2,10 +2,10 @@ import '../pages/about_us/about_us.dart';
 import '../pages/contact_us/contact_us.dart';
 import '../pages/home/home.dart';
 
-const RootRoute = "/";
+//const RootRoute = "/home";
 
-const HomePageName = "MainPage";
-const HomePageRoute = "/home";
+const HomePageName = "HomePage";
+const HomePageRoute = "/";
 //const HomePageWidget = Home();
 
 const AboutUsPageName = "AboutUs";

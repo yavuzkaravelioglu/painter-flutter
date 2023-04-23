@@ -9,6 +9,7 @@ import 'pages/about_us/about_us.dart';
 import 'pages/contact_us/contact_us.dart';
 import 'pages/home/home.dart';
 import 'routing/app_routes.dart';
+import 'routing/go_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
       title: 'Painter',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
@@ -35,13 +36,14 @@ class MyApp extends StatelessWidget {
         }),
         primaryColor: Colors.blueGrey,
       ),
-      initialRoute: HomePageRoute,
+      routerConfig: goRouter,
+      //initialRoute: HomePageRoute,
       //getPages: AppRouting.routes,
-      getPages: [
+      /*getPages: [
         GetPage(name: HomePageRoute, page: () => Home()),
         GetPage(name: AboutUsPageRoute, page: () => AboutUs()),
         GetPage(name: ContactUsPageRoute, page: () => ContactUs()),
-      ],
+      ],*/
       //home: Home(),
     );
   }
