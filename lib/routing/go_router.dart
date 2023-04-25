@@ -48,13 +48,14 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
   required Widget child,
 }) {
   return CustomTransitionPage(
-      transitionDuration: Duration(milliseconds: 50),
-      key: state.pageKey,
-      child: child,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeTransition(
-          opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-          child: child,
-        );
-      });
+    transitionDuration: Duration(milliseconds: 120),
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(
+        opacity: CurveTween(curve: Curves.bounceIn).animate(animation),
+        child: child,
+      );
+    },
+  );
 }

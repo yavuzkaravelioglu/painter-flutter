@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
 
@@ -16,9 +17,7 @@ class AboutUs extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: TopNavigationBar(context, scaffoldKey),
-      drawer: Drawer(
-        child: SideNavigationBar(),
-      ),
+      drawer: CustomDrawer(),
       body: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,

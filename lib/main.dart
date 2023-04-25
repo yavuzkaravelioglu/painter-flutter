@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Painter',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromARGB(59, 81, 81, 81),
+        scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
         textTheme: GoogleFonts.mulishTextTheme(
           Theme.of(context).textTheme,
         ).apply(
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
           TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
         }),
-        primaryColor: Colors.blueGrey,
+        primaryColor: Color.fromARGB(255, 255, 255, 255),
       ),
       routerConfig: goRouter,
       //initialRoute: HomePageRoute,

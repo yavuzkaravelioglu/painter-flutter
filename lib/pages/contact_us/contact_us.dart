@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:paint_burak/widgets/animated_widgets/state_exercise.dart';
 
+import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
 
@@ -15,9 +16,7 @@ class ContactUs extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: TopNavigationBar(context, scaffoldKey),
-      drawer: Drawer(
-        child: SideNavigationBar(),
-      ),
+      drawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(children: const [
           Text("CONTACT US"),

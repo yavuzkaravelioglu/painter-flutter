@@ -10,13 +10,27 @@ class SideNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    String menuType = 'side-navbar';
 
     return ListView(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       children: [
         SizedBox(
-          height: screenHeight * 0.15,
+          height: screenHeight * 0.09,
+        ),
+        Container(
+          height: 80.0,
+          width: 80.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/logos/paint_logo.png"),
+            ),
+            shape: BoxShape.circle,
+          ),
+        ),
+        SizedBox(
+          height: screenHeight * 0.07,
         ),
         Column(
           children: AppRouting.menuItems
@@ -25,6 +39,7 @@ class SideNavigationBar extends StatelessWidget {
                   children: [
                     NavbarItem(
                       navbarItemName: e.pageName,
+                      menuType: menuType,
                     ),
                     SizedBox(
                       height: screenHeight * 0.04,

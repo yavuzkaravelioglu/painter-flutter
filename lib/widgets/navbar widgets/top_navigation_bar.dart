@@ -20,6 +20,7 @@ import 'navbar_item.dart';
 
 AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
   double screenWidth = MediaQuery.of(context).size.width;
+  String menuType = 'top-navbar';
 
   return AppBar(
     leading: (Responsive.isSmallScreen(context))
@@ -31,11 +32,14 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
             onPressed: () {
               key.currentState?.openDrawer();
             },
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
           )
         : Row(
             children: [
               SizedBox(
-                width: screenWidth * 0.07,
+                width: screenWidth * 0.04,
               ),
               LogoContainer(context),
             ],
@@ -56,6 +60,7 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                         children: [
                           NavbarItem(
                             navbarItemName: e.pageName,
+                            menuType: menuType,
                           ),
                           SizedBox(
                             width: screenWidth * 0.02,
@@ -69,7 +74,8 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
             //StateExercise(),
           ]
         : <Widget>[],
-    backgroundColor: const Color.fromARGB(255, 185, 185, 185),
+    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+    //backgroundColor: Colors.grey[300],
   );
 }
 
