@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:paint_burak/routing/app_routes.dart';
 
 import '../../helpers/responsive.dart';
 import '../../routing/app_routing.dart';
+import '../animated_widgets/state_exercise.dart';
 import 'navbar_item.dart';
 
 // AppBar döndüren bi fonksiyon olucak, context ve scaffoldkey parametre olarak alınacak
@@ -16,6 +19,8 @@ import 'navbar_item.dart';
 //  routes.dart ta tanımlı ekranlar map yapılacak. her bir itemname navbarItem ın constructırına yollanacak
 
 AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
+  double screenWidth = MediaQuery.of(context).size.width;
+
   return AppBar(
     leading: (Responsive.isSmallScreen(context))
         ? IconButton(
@@ -27,36 +32,59 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
               key.currentState?.openDrawer();
             },
           )
-        : LogoContainer(),
-    title: Responsive.isSmallScreen(context) ? LogoContainer() : Container(),
+        : Row(
+            children: [
+              SizedBox(
+                width: screenWidth * 0.07,
+              ),
+              LogoContainer(context),
+            ],
+          ),
+    leadingWidth: screenWidth * 0.15,
+    title: Responsive.isSmallScreen(context)
+        ? LogoContainer(context)
+        : Container(),
     actions: !(Responsive.isSmallScreen(context))
         ? [
-            ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                Row(
-                  children: AppRouting.menuItems
-                      .map((e) => NavbarItem(
+            SizedBox(
+              width: screenWidth * 0.4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: AppRouting.menuItems
+                    .map(
+                      (e) => Row(
+                        children: [
+                          NavbarItem(
                             navbarItemName: e.pageName,
-                            navbarItemRoute: e.routeName,
-                          ))
-                      .toList(),
-                )
-              ],
-            )
+                          ),
+                          SizedBox(
+                            width: screenWidth * 0.02,
+                          )
+                        ],
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+            //StateExercise(),
           ]
         : <Widget>[],
-    backgroundColor: Colors.white,
+    backgroundColor: const Color.fromARGB(255, 185, 185, 185),
   );
 }
 
-Container LogoContainer() {
+Container LogoContainer(BuildContext context) {
   return Container(
-    padding: EdgeInsets.only(left: 14),
-    child: Image.asset(
-      "assets/logos/paint_logo.png",
-      width: 40,
+    //padding: EdgeInsets.only(left: 10),
+    child: IconButton(
+      icon: Image.asset("assets/logos/paint_logo.png"),
+      iconSize: 60,
+      onPressed: () {
+        context.goNamed(HomePageName);
+      },
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
     ),
   );
 }

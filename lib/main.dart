@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Painter',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Color.fromARGB(59, 81, 81, 81),
         textTheme: GoogleFonts.mulishTextTheme(
           Theme.of(context).textTheme,
         ).apply(
