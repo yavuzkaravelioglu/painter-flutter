@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paint_burak/routing/app_routes.dart';
 
+import '../../constants/logos.dart';
 import '../../helpers/responsive.dart';
 import '../../routing/app_routing.dart';
 import '../animated_widgets/state_exercise.dart';
@@ -83,7 +84,7 @@ Container LogoContainer(BuildContext context) {
   return Container(
     //padding: EdgeInsets.only(left: 10),
     child: IconButton(
-      icon: Image.asset("assets/logos/paint_logo.png"),
+      icon: Image.asset(Logo),
       iconSize: 60,
       onPressed: () {
         context.goNamed(HomePageName);

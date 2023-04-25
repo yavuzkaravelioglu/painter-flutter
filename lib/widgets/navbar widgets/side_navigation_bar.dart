@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:paint_burak/routing/app_routing.dart';
 import 'package:paint_burak/widgets/navbar%20widgets/navbar_item.dart';
 
+import '../../constants/logos.dart';
+
 class SideNavigationBar extends StatelessWidget {
   const SideNavigationBar({super.key});
 
@@ -24,7 +26,7 @@ class SideNavigationBar extends StatelessWidget {
           width: 80.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/logos/paint_logo.png"),
+              image: AssetImage(Logo),
             ),
             shape: BoxShape.circle,
           ),

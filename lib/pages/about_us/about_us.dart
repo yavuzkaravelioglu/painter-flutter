@@ -1,10 +1,13 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:paint_burak/helpers/responsive.dart';
+import 'package:paint_burak/pages/about_us/about_us_small.dart';
 
 import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
+import 'about_us_large.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
@@ -18,35 +21,11 @@ class AboutUs extends StatelessWidget {
       key: scaffoldKey,
       appBar: TopNavigationBar(context, scaffoldKey),
       drawer: CustomDrawer(),
-      body: Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              PageText(),
-              PageText(),
-              PageText(),
-              PageText(),
-            ],
-          ),
-        ),
+      body: Responsive(
+        largeScreen: AboutUsLarge(),
+        mediumScreen: AboutUsLarge(),
+        smallScreen: AboutUsSmall(),
       ),
-    );
-  }
-}
-
-class PageText extends StatelessWidget {
-  const PageText({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      height: 300,
-      child: Text("ABOUT US"),
     );
   }
 }
