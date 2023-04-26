@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paint_burak/pages/contact_us/contact_us.dart';
 
+import '../../controllers/active_navbar_item_controller.dart';
 import '../../pages/about_us/about_us.dart';
 import '../animated_widgets/state_exercise.dart';
 
@@ -11,8 +12,11 @@ class NavbarItem extends StatefulWidget {
   final String navbarItemName;
   final String menuType;
 
-  const NavbarItem(
-      {super.key, required this.navbarItemName, required this.menuType});
+  const NavbarItem({
+    super.key,
+    required this.navbarItemName,
+    required this.menuType,
+  });
 
   @override
   State<NavbarItem> createState() => _NavbarItemState();
@@ -22,9 +26,9 @@ class _NavbarItemState extends State<NavbarItem> {
   bool isHover = false;
   bool isActive = true;
   late String menuItemText;
+  late FontWeight _fontWeight;
 
   Color _hoverItemColor = Colors.black;
-  FontWeight _fontWeight = FontWeight.normal;
 
   @override
   void initState() {
@@ -35,17 +39,17 @@ class _NavbarItemState extends State<NavbarItem> {
 
   @override
   Widget build(BuildContext context) {
+    ActiveNavbarItemController c = Get.find();
+
     return InkWell(
       onTap: () {
-        setState(() {
-          //isActive = false;
-        });
         context.goNamed(widget.navbarItemName);
+        c.updateActiveItemName(widget.navbarItemName);
       },
       onHover: (value) {
         setState(() {
           value ? isHover = true : isHover = false;
-          isHover
+          (isHover == true && widget.navbarItemName != c.activeItemName.value)
               ? _hoverItemColor = Color.fromARGB(255, 193, 136, 191)
               : _hoverItemColor = Colors.black;
         });
@@ -53,9 +57,15 @@ class _NavbarItemState extends State<NavbarItem> {
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
-      child: Text(
-        menuItemText,
-        style: TextStyle(color: _hoverItemColor, fontWeight: _fontWeight),
+      child: Obx(
+        () => Text(
+          menuItemText,
+          style: TextStyle(
+              color: _hoverItemColor,
+              fontWeight: (c.activeItemName.value == widget.navbarItemName)
+                  ? _fontWeight = FontWeight.bold
+                  : _fontWeight = FontWeight.normal),
+        ),
       ),
     );
   }

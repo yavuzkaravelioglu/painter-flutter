@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paint_burak/routing/app_routes.dart';
 
 import '../../constants/logos.dart';
+import '../../controllers/active_navbar_item_controller.dart';
 import '../../helpers/responsive.dart';
 import '../../routing/app_routing.dart';
 import '../animated_widgets/state_exercise.dart';
@@ -22,6 +24,7 @@ import 'navbar_item.dart';
 AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
   double screenWidth = MediaQuery.of(context).size.width;
   String menuType = 'top-navbar';
+  final ActiveNavbarItemController c = Get.find();
 
   return AppBar(
     leading: (Responsive.isSmallScreen(context))
