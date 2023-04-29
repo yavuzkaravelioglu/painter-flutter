@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../widgets/shared_widgets/font_advent_text.dart';
+import '../../widgets/text_widgets/font_advent_text.dart';
 
 class AboutUsLarge extends StatelessWidget {
   const AboutUsLarge({super.key});

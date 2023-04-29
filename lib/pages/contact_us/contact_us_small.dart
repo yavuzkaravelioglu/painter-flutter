@@ -3,17 +3,29 @@
 import 'package:flutter/material.dart';
 import 'package:paint_burak/pages/about_us/about_us.dart';
 
-import '../../widgets/shared_widgets/font_advent_text.dart';
+import '../../widgets/text_widgets/font_advent_text.dart';
 
 class ContactUsSmall extends StatelessWidget {
   const ContactUsSmall({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: [
-          //StateExercise(),
+          Container(
+            height: screenSize.height * 0.6,
+            width: screenSize.width * 1,
+            decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage("assets/photos/d-1.jpeg"),
+                colorFilter: ColorFilter.mode(Colors.black, BlendMode.dstATop),
+                opacity: 0.4,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ],
       ),
     );

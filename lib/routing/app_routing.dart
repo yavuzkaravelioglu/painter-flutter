@@ -18,8 +18,8 @@ class AppRouting {
     GetPage(name: ServicesPageRoute, page: () => Services()),
     GetPage(name: ProjectsPageRoute, page: () => Projects()),
     GetPage(name: AboutUsPageRoute, page: () => AboutUs()),
-    GetPage(name: ReviewPageRoute, page: () => Review()),
     GetPage(name: ContactUsPageRoute, page: () => ContactUs()),
+    //GetPage(name: ReviewPageRoute, page: () => Review()),
   ];
 
   static final List<AppRouting> menuItems = [
@@ -27,7 +27,7 @@ class AppRouting {
     AppRouting(ServicesPageName, ServicesPageRoute),
     AppRouting(ProjectsPageName, ProjectsPageRoute),
     AppRouting(AboutUsPageName, AboutUsPageRoute),
-    AppRouting(ReviewPageName, ReviewPageRoute),
     AppRouting(ContactUsPageName, ContactUsPageRoute),
+    //AppRouting(ReviewPageName, ReviewPageRoute),
   ];
 }

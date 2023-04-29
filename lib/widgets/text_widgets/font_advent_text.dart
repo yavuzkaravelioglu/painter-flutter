@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FontAdventText extends StatelessWidget {
   final String text;
-  final double size;
+  final double fontSize;
   final double? containerHeight;
   final Color color;
   final double? letterSpacing;
@@ -15,7 +15,7 @@ class FontAdventText extends StatelessWidget {
   const FontAdventText({
     super.key,
     required this.text,
-    required this.size,
+    required this.fontSize,
     this.containerHeight,
     required this.color,
     this.letterSpacing,
@@ -38,7 +38,7 @@ class FontAdventText extends StatelessWidget {
         style: GoogleFonts.adventPro(
           textStyle: TextStyle(
             color: color,
-            fontSize: size,
+            fontSize: fontSize,
             letterSpacing: letterSpacing,
           ),
         ),

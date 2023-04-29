@@ -1,13 +1,13 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paint_burak/routing/app_routes.dart';
-import 'package:paint_burak/widgets/shared_widgets/font_montserrat_text.dart';
-import 'package:paint_burak/widgets/shared_widgets/font_orbitron_text.dart';
-import 'package:paint_burak/widgets/shared_widgets/font_advent_text.dart';
+import 'package:paint_burak/widgets/text_widgets/font_montserrat_text.dart';
+import 'package:paint_burak/widgets/text_widgets/font_orbitron_text.dart';
+import 'package:paint_burak/widgets/text_widgets/font_advent_text.dart';
 
 import '../../constants/logos.dart';
 import '../../controllers/active_navbar_item_controller.dart';
@@ -40,7 +40,7 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
         ? IconButton(
             icon: Icon(
               Icons.menu,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () {
               key.currentState?.openDrawer();
@@ -58,10 +58,11 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
               LogoContainer(context),
             ],
           ),*/
-    leadingWidth: 0,
-    //leadingWidth: screenSize.width * 0.01,
+    leadingWidth: (Responsive.isSmallScreen(context)) ? 56 : 0,
     title: Responsive.isSmallScreen(context)
-        ? LogoContainer(context, c)
+        ? LogoText(context, c, 40, 200, Colors.white)
+
+        //LogoContainer(context, c, key)
         : Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -96,7 +97,7 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
               ),
               Expanded(
                 flex: 1,
-                child: LogoText(context, c),
+                child: LogoText(context, c, 45, 300, Colors.white),
               ),
               Expanded(
                 flex: 1,
@@ -107,7 +108,7 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                       width: screenSize.width * 0.025,
                     ),
                     NavbarItem(
-                      navbarItemName: AppRouting.menuItems[5].pageName,
+                      navbarItemName: AppRouting.menuItems[4].pageName,
                       menuType: menuType,
                     ),
                   ],
@@ -156,7 +157,8 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
   );
 }
 
-Container LogoContainer(BuildContext context, ActiveNavbarItemController c) {
+Container LogoContainer(BuildContext context, ActiveNavbarItemController c,
+    GlobalKey<ScaffoldState> key) {
   return Container(
     //padding: EdgeInsets.only(left: 10),
     child: IconButton(
@@ -173,22 +175,27 @@ Container LogoContainer(BuildContext context, ActiveNavbarItemController c) {
   );
 }
 
-Container LogoText(BuildContext context, ActiveNavbarItemController c) {
+Container LogoText(BuildContext context, ActiveNavbarItemController c,
+    double fontSize, double height, Color color) {
   return Container(
     //padding: EdgeInsets.only(left: 10),
-    child: TextButton(
-      child: FontOrbitronText(
-        text: "P A I N T Y",
-        fontSize: 26,
-        containerHeight: 300,
-        color: Colors.white,
-        containerAlign: Alignment.center,
-        textAlign: TextAlign.center,
+    child: InkWell(
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: logoText(
+          fontSize,
+          height,
+          color,
+        ),
       ),
-      onPressed: () {
+      onTap: () {
+        print("Logo Pressed");
         context.goNamed(HomePageName);
         c.updateActiveItemName(HomePageName);
       },
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
     ),
   );
 }

@@ -27,19 +27,32 @@ class _NavbarItemState extends State<NavbarItem> {
   bool isActive = true;
   late String menuItemText;
   late FontWeight _fontWeight;
-
-  Color _itemColor = Colors.white;
+  late Color _itemColor;
+  late Color _color1;
+  late Color _color2;
 
   @override
   void initState() {
     (widget.menuType == 'side-navbar')
         ? menuItemText = addSpace(widget.navbarItemName)
         : menuItemText = widget.navbarItemName;
+    (widget.menuType == 'side-navbar')
+        ? {
+            _color1 = Colors.black,
+            _itemColor = Colors.black,
+            _color2 = Colors.grey,
+          }
+        : {
+            _color1 = Colors.white,
+            _itemColor = Colors.white,
+            _color2 = Colors.black,
+          };
   }
 
   @override
   Widget build(BuildContext context) {
     ActiveNavbarItemController c = Get.find();
+    var screenSize = MediaQuery.of(context).size;
 
     return InkWell(
       onTap: () {
@@ -50,24 +63,28 @@ class _NavbarItemState extends State<NavbarItem> {
         setState(() {
           value ? isHover = true : isHover = false;
           (isHover == true && widget.navbarItemName != c.activeItemName.value)
-              ? _itemColor = Colors.black
-              : _itemColor = Colors.white;
+              ? _itemColor = _color2
+              : _itemColor = _color1;
         });
       },
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       child: Obx(
-        () => Text(
-          menuItemText,
-          style: GoogleFonts.montserrat(
-            textStyle: TextStyle(
-              fontSize: 12,
-              letterSpacing: 2,
-              color: _itemColor,
-              fontWeight: (c.activeItemName.value == widget.navbarItemName)
-                  ? _fontWeight = FontWeight.bold
-                  : _fontWeight = FontWeight.normal,
+        () => FittedBox(
+          fit: BoxFit.cover,
+          child: Text(
+            menuItemText,
+            style: GoogleFonts.montserrat(
+              textStyle: TextStyle(
+                //fontSize: screenSize.width * 0.01,
+                fontSize: 12,
+                letterSpacing: 2,
+                color: _itemColor,
+                fontWeight: (c.activeItemName.value == widget.navbarItemName)
+                    ? _fontWeight = FontWeight.bold
+                    : _fontWeight = FontWeight.normal,
+              ),
             ),
           ),
         ),

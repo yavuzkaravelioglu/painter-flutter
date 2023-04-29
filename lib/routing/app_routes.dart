@@ -17,5 +17,5 @@ const ContactUsPageRoute = "/contact";
 const ProjectsPageName = "PROJECTS";
 const ProjectsPageRoute = "/projects";
 
-const ReviewPageName = "REVIEW";
-const ReviewPageRoute = "/review";
+/* const ReviewPageName = "REVIEW";
+const ReviewPageRoute = "/review"; */

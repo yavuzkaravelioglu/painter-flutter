@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shared_widgets/font_montserrat_text.dart';
+import '../text_widgets/font_montserrat_text.dart';
 
 Container TransparentButton(double Height, EdgeInsets PaddingValues,
     String Text, double Size, Color Color, double LetterSpacing) {

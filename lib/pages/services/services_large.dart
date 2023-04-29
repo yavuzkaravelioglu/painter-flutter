@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:paint_burak/widgets/shared_widgets/font_orbitron_text.dart';
+import 'package:paint_burak/widgets/text_widgets/font_orbitron_text.dart';
 
 import '../../widgets/button_widgets/transparent_button.dart';
-import '../../widgets/shared_widgets/font_advent_text.dart';
+import '../../widgets/shared_widgets/pantone_card.dart';
+import '../../widgets/text_widgets/font_advent_text.dart';
+import '../../widgets/text_widgets/font_montserrat_text.dart';
 
 class ServicesLarge extends StatelessWidget {
   const ServicesLarge({super.key});
@@ -28,10 +30,11 @@ class ServicesLarge extends StatelessWidget {
               horizontal: screenSize.width * 0.2,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FontOrbitronText(
-                  text: "The services that we\noffer",
-                  fontSize: 40,
+                  text: "The services that\nwe offer",
+                  fontSize: 43,
                   color: Colors.black,
                   letterSpacing: 2,
                   containerAlign: Alignment.topLeft,
@@ -40,9 +43,18 @@ class ServicesLarge extends StatelessWidget {
                 SizedBox(
                   height: screenSize.height * 0.08,
                 ),
+                Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  color: Colors.black,
+                  size: 42.0,
+                  semanticLabel: 'Text to announce in accessibility modes',
+                ),
+                SizedBox(
+                  height: screenSize.height * 0.08,
+                ),
                 FontOrbitronText(
                   text: "Painting",
-                  fontSize: 27,
+                  fontSize: 30,
                   color: Colors.black,
                   letterSpacing: 2,
                   containerAlign: Alignment.topLeft,
@@ -51,16 +63,59 @@ class ServicesLarge extends StatelessWidget {
                 GridView.count(
                   shrinkWrap: true,
                   primary: false,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 5,
-                  crossAxisCount: 4,
+                  padding: EdgeInsets.symmetric(vertical: 40),
+                  crossAxisSpacing: 30,
+                  mainAxisSpacing: 15,
+                  crossAxisCount: 3,
                   children: <Widget>[
-                    paintingServicesContainer('Sound of screams but the'),
-                    paintingServicesContainer('Heed not the rabble'),
-                    paintingServicesContainer('Hed have you all at the'),
-                    paintingServicesContainer('Heed not the rabble'),
-                    paintingServicesContainer('Sound of screams but the'),
-                    paintingServicesContainer('Heed not the rabble'),
+                    PantoneCard(
+                      textHead: 'Maintenance contract\nfor paintwork',
+                      textBody: "",
+                      screenWidth: screenSize.width,
+                      fontSize: 0,
+                      //textBody: 'Hed have you all at the',
+                      color: Color.fromARGB(255, 194, 191, 181),
+                    ),
+                    PantoneCard(
+                      textHead: 'Exterior painting\n',
+                      textBody: "",
+                      screenWidth: screenSize.width,
+                      fontSize: 0,
+                      //textBody: 'Heed not the rabble',
+                      color: Color.fromARGB(255, 175, 164, 206),
+                    ),
+                    PantoneCard(
+                      textHead: 'Interior painting\n',
+                      textBody: "",
+                      screenWidth: screenSize.width,
+                      fontSize: 0,
+                      //textBody: 'Sound of screams but the',
+                      color: Color.fromARGB(255, 238, 165, 197),
+                    ),
+                    PantoneCard(
+                      textHead: 'Owners association\npainter',
+                      textBody: "",
+                      screenWidth: screenSize.width,
+                      fontSize: 0,
+                      //textBody: 'Sound of screams but the',
+                      color: Color.fromARGB(255, 245, 223, 77),
+                    ),
+                    PantoneCard(
+                      textHead: 'Winter painters\n',
+                      textBody: "",
+                      screenWidth: screenSize.width,
+                      fontSize: 0,
+                      //textBody: 'Heed not the rabble',
+                      color: Color.fromARGB(255, 163, 204, 201),
+                    ),
+                    PantoneCard(
+                      textHead: 'Powder coating\n',
+                      textBody: "",
+                      screenWidth: screenSize.width,
+                      fontSize: 0,
+                      //textBody: 'Heed not the rabble',
+                      color: Color.fromARGB(255, 140, 172, 211),
+                    ),
                   ],
                 ),
               ],
@@ -81,23 +136,6 @@ class ServicesLarge extends StatelessWidget {
         opacity: opacity,
         fit: BoxFit.cover,
       ),
-    );
-  }
-
-  Container paintingServicesContainer(String text) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 0.6,
-          color: Colors.black,
-        ),
-        borderRadius: BorderRadius.all(
-          Radius.circular(1),
-        ),
-      ),
-      //Border.all(color: Colors.blacks)
-      padding: EdgeInsets.all(8),
-      child: Text("$text"),
     );
   }
 }

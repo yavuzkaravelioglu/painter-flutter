@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paint_burak/widgets/button_widgets/transparent_button.dart';
-import 'package:paint_burak/widgets/shared_widgets/font_montserrat_text.dart';
+import 'package:paint_burak/widgets/text_widgets/font_montserrat_text.dart';
 
 import '../../widgets/animated_widgets/heart.dart';
-import '../../widgets/shared_widgets/font_advent_text.dart';
+import '../../widgets/text_widgets/font_advent_text.dart';
 
 class HomeLarge extends StatelessWidget {
   const HomeLarge({super.key});
@@ -53,7 +53,7 @@ class HomeLarge extends StatelessWidget {
       //right: screenSize.width * 0.1,
       child: FontAdventText(
         text: "The painter of \nRochester",
-        size: 45,
+        fontSize: 45,
         color: Colors.white,
         letterSpacing: 10,
         textAlign: TextAlign.center,
