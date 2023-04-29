@@ -3,13 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:paint_burak/routing/app_routes.dart';
+import 'package:paint_burak/widgets/shared_widgets/font_montserrat_text.dart';
+import 'package:paint_burak/widgets/shared_widgets/font_orbitron_text.dart';
+import 'package:paint_burak/widgets/shared_widgets/font_advent_text.dart';
 
 import '../../constants/logos.dart';
 import '../../controllers/active_navbar_item_controller.dart';
 import '../../helpers/responsive.dart';
 import '../../routing/app_routing.dart';
 import '../animated_widgets/state_exercise.dart';
+import '../button_widgets/transparent_button.dart';
 import 'navbar_item.dart';
 
 // AppBar döndüren bi fonksiyon olucak, context ve scaffoldkey parametre olarak alınacak
@@ -22,11 +27,15 @@ import 'navbar_item.dart';
 //  routes.dart ta tanımlı ekranlar map yapılacak. her bir itemname navbarItem ın constructırına yollanacak
 
 AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
-  double screenWidth = MediaQuery.of(context).size.width;
+  var screenSize = MediaQuery.of(context).size;
   String menuType = 'top-navbar';
   final ActiveNavbarItemController c = Get.find();
 
   return AppBar(
+    toolbarHeight: screenSize.height * 0.15,
+    elevation: 0.0,
+    backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+    //backgroundColor: Color.fromARGB(255, 255, 255, 255),
     leading: (Responsive.isSmallScreen(context))
         ? IconButton(
             icon: Icon(
@@ -40,22 +49,87 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
           )
-        : Row(
+        : Container(),
+    /*Row(
             children: [
               SizedBox(
-                width: screenWidth * 0.04,
+                width: screenSize.width * 0.04,
               ),
               LogoContainer(context),
             ],
-          ),
-    leadingWidth: screenWidth * 0.15,
+          ),*/
+    leadingWidth: 0,
+    //leadingWidth: screenSize.width * 0.01,
     title: Responsive.isSmallScreen(context)
-        ? LogoContainer(context)
-        : Container(),
-    actions: !(Responsive.isSmallScreen(context))
+        ? LogoContainer(context, c)
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    NavbarItem(
+                      navbarItemName: AppRouting.menuItems[1].pageName,
+                      menuType: menuType,
+                    ),
+                    SizedBox(
+                      width: screenSize.width * 0.02,
+                    ),
+                    NavbarItem(
+                      navbarItemName: AppRouting.menuItems[2].pageName,
+                      menuType: menuType,
+                    ),
+                    SizedBox(
+                      width: screenSize.width * 0.02,
+                    ),
+                    NavbarItem(
+                      navbarItemName: AppRouting.menuItems[3].pageName,
+                      menuType: menuType,
+                    ),
+                    SizedBox(
+                      width: screenSize.width * 0.025,
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: LogoText(context, c),
+              ),
+              Expanded(
+                flex: 1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: screenSize.width * 0.025,
+                    ),
+                    NavbarItem(
+                      navbarItemName: AppRouting.menuItems[5].pageName,
+                      menuType: menuType,
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TransparentButton(40, EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        "REQUEST A QUOTE", 12, Colors.white, 2),
+                  ],
+                ),
+              ),
+            ],
+          ),
+    actions: <Widget>[],
+    /*!(Responsive.isSmallScreen(context))
         ? [
             SizedBox(
-              width: screenWidth * 0.4,
+              width: screenSize.width * 0.4,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: AppRouting.menuItems
@@ -67,7 +141,7 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                             menuType: menuType,
                           ),
                           SizedBox(
-                            width: screenWidth * 0.02,
+                            width: screenSize.width * 0.02,
                           )
                         ],
                       ),
@@ -78,12 +152,11 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
             //StateExercise(),
           ]
         : <Widget>[],
-    backgroundColor: Color.fromARGB(255, 255, 255, 255),
-    //backgroundColor: Colors.grey[300],
+    //backgroundColor: Colors.grey[300],*/
   );
 }
 
-Container LogoContainer(BuildContext context) {
+Container LogoContainer(BuildContext context, ActiveNavbarItemController c) {
   return Container(
     //padding: EdgeInsets.only(left: 10),
     child: IconButton(
@@ -91,6 +164,7 @@ Container LogoContainer(BuildContext context) {
       iconSize: 60,
       onPressed: () {
         context.goNamed(HomePageName);
+        c.updateActiveItemName(HomePageName);
       },
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -98,3 +172,28 @@ Container LogoContainer(BuildContext context) {
     ),
   );
 }
+
+Container LogoText(BuildContext context, ActiveNavbarItemController c) {
+  return Container(
+    //padding: EdgeInsets.only(left: 10),
+    child: TextButton(
+      child:
+          FontOrbitronText(text: "P A I N T Y", size: 26, color: Colors.white),
+      onPressed: () {
+        context.goNamed(HomePageName);
+        c.updateActiveItemName(HomePageName);
+      },
+    ),
+  );
+}
+
+/*Text(
+        "P A I N T Y",
+        //"S T R U C T",
+        style: GoogleFonts.libreBaskerville(
+          textStyle: TextStyle(
+            fontSize: 22,
+            color: Colors.white,
+          ),
+        ),
+      ),*/

@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:paint_burak/widgets/shared_widgets/font_advent_text.dart';
 
-class AboutUsSmall extends StatelessWidget {
-  const AboutUsSmall({super.key});
+class ReviewSmall extends StatelessWidget {
+  const ReviewSmall({super.key});
 
   @override
   Widget build(BuildContext context) {

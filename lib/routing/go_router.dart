@@ -6,6 +6,8 @@ import 'package:paint_burak/pages/not_found/not_found.dart';
 import 'package:paint_burak/routing/app_routes.dart';
 
 import '../pages/home/home.dart';
+import '../pages/projects/projects.dart';
+import '../pages/services/services.dart';
 
 // GoRouter configuration
 final goRouter = GoRouter(
@@ -19,6 +21,24 @@ final goRouter = GoRouter(
         context: context,
         state: state,
         child: Home(),
+      ),
+    ),
+    GoRoute(
+      name: ServicesPageName,
+      path: ServicesPageRoute,
+      pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
+        context: context,
+        state: state,
+        child: Services(),
+      ),
+    ),
+    GoRoute(
+      name: ProjectsPageName,
+      path: ProjectsPageRoute,
+      pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
+        context: context,
+        state: state,
+        child: Projects(),
       ),
     ),
     GoRoute(

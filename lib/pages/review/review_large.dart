@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/shared_widgets/font_advent_text.dart';
 
-class AboutUsLarge extends StatelessWidget {
-  const AboutUsLarge({super.key});
+class ReviewLarge extends StatelessWidget {
+  const ReviewLarge({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class AboutUsLarge extends StatelessWidget {
             width: screenSize.width * 1,
             decoration: BoxDecoration(
               image: const DecorationImage(
-                image: AssetImage("assets/photos/e-1.jpeg"),
+                image: AssetImage("assets/photos/b-1.jpeg"),
                 colorFilter: ColorFilter.mode(Colors.black, BlendMode.dstATop),
                 opacity: 0.4,
                 fit: BoxFit.cover,

@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
 import '../../widgets/animated_widgets/heart.dart';
-import '../../widgets/shared_widgets/page_text.dart';
+import '../../widgets/shared_widgets/font_advent_text.dart';
 
 class HomeSmall extends StatelessWidget {
   const HomeSmall({super.key});
@@ -16,11 +16,6 @@ class HomeSmall extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Heart(),
-          PageText(text: "HOME SMALL"),
-          PageText(text: "HOME SMALL"),
-          PageText(text: "HOME SMALL"),
-          PageText(text: "HOME SMALL"),
         ],
       ),
     );

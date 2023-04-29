@@ -1,19 +1,16 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:paint_burak/helpers/responsive.dart';
-import 'package:paint_burak/widgets/animated_widgets/heart.dart';
+import 'package:paint_burak/pages/about_us/about_us_small.dart';
 
 import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
-import 'home_large.dart';
-import 'home_small.dart';
+import 'review_large.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Review extends StatelessWidget {
+  const Review({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +19,13 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldKey,
-      extendBodyBehindAppBar: true,
       appBar: TopNavigationBar(context, scaffoldKey),
+      extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
       body: Responsive(
-        largeScreen: HomeLarge(),
-        mediumScreen: HomeLarge(),
-        smallScreen: HomeSmall(),
+        largeScreen: ReviewLarge(),
+        mediumScreen: ReviewLarge(),
+        smallScreen: AboutUsSmall(),
       ),
     );
   }

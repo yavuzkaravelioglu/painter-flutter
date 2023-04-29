@@ -20,6 +20,7 @@ class AboutUs extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: TopNavigationBar(context, scaffoldKey),
+      extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
       body: Responsive(
         largeScreen: AboutUsLarge(),

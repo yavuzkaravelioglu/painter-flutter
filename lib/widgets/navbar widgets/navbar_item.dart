@@ -28,7 +28,7 @@ class _NavbarItemState extends State<NavbarItem> {
   late String menuItemText;
   late FontWeight _fontWeight;
 
-  Color _hoverItemColor = Colors.black;
+  Color _itemColor = Colors.white;
 
   @override
   void initState() {
@@ -50,8 +50,8 @@ class _NavbarItemState extends State<NavbarItem> {
         setState(() {
           value ? isHover = true : isHover = false;
           (isHover == true && widget.navbarItemName != c.activeItemName.value)
-              ? _hoverItemColor = Color.fromARGB(255, 193, 136, 191)
-              : _hoverItemColor = Colors.black;
+              ? _itemColor = Colors.black
+              : _itemColor = Colors.white;
         });
       },
       hoverColor: Colors.transparent,
@@ -60,11 +60,16 @@ class _NavbarItemState extends State<NavbarItem> {
       child: Obx(
         () => Text(
           menuItemText,
-          style: TextStyle(
-              color: _hoverItemColor,
+          style: GoogleFonts.montserrat(
+            textStyle: TextStyle(
+              fontSize: 12,
+              letterSpacing: 2,
+              color: _itemColor,
               fontWeight: (c.activeItemName.value == widget.navbarItemName)
                   ? _fontWeight = FontWeight.bold
-                  : _fontWeight = FontWeight.normal),
+                  : _fontWeight = FontWeight.normal,
+            ),
+          ),
         ),
       ),
     );
@@ -78,3 +83,5 @@ String addSpace(String menuItemText) {
   });
   return menuItemTextRevised;
 }
+
+// montserrat
