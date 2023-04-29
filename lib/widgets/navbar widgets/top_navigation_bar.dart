@@ -177,8 +177,14 @@ Container LogoText(BuildContext context, ActiveNavbarItemController c) {
   return Container(
     //padding: EdgeInsets.only(left: 10),
     child: TextButton(
-      child:
-          FontOrbitronText(text: "P A I N T Y", size: 26, color: Colors.white),
+      child: FontOrbitronText(
+        text: "P A I N T Y",
+        fontSize: 26,
+        containerHeight: 300,
+        color: Colors.white,
+        containerAlign: Alignment.center,
+        textAlign: TextAlign.center,
+      ),
       onPressed: () {
         context.goNamed(HomePageName);
         c.updateActiveItemName(HomePageName);

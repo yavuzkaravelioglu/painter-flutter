@@ -5,25 +5,29 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FontMontserratText extends StatelessWidget {
   final String text;
-  final double size;
+  final double fontSize;
+  final double? containerHeight;
   final Color color;
   final double? letterSpacing;
   final textAlign;
+  final containerAlign;
 
   const FontMontserratText({
     super.key,
     required this.text,
-    required this.size,
+    required this.fontSize,
+    this.containerHeight,
     required this.color,
     this.letterSpacing,
     this.textAlign,
+    this.containerAlign,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
-      height: 300,
+      alignment: containerAlign,
+      height: containerHeight,
       child: Text(
         "$text",
         textAlign: textAlign,
@@ -34,7 +38,7 @@ class FontMontserratText extends StatelessWidget {
         style: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: color,
-            fontSize: size,
+            fontSize: fontSize,
             letterSpacing: letterSpacing,
           ),
         ),

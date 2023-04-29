@@ -49,7 +49,7 @@ class HomeLarge extends StatelessWidget {
 
   Positioned mainText(Size screenSize) {
     return Positioned(
-      top: screenSize.height * 0.25,
+      top: screenSize.height * 0.45,
       //right: screenSize.width * 0.1,
       child: FontAdventText(
         text: "The painter of \nRochester",
@@ -63,7 +63,7 @@ class HomeLarge extends StatelessWidget {
 
   Positioned mainButton(Size screenSize) {
     return Positioned(
-      top: screenSize.height * 0.6,
+      top: screenSize.height * 0.65,
       child: TransparentButton(50, EdgeInsets.fromLTRB(20, 0, 20, 0),
           "SEE ALL PROJECTS", 13, Colors.white, 3),
     );
