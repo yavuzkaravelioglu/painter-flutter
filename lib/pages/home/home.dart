@@ -5,6 +5,8 @@ import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:paint_burak/helpers/responsive.dart';
 import 'package:paint_burak/widgets/animated_widgets/heart.dart';
+import 'package:paint_burak/widgets/navbar%20widgets/silver_top_navigation_bar_widget.dart';
+import 'package:paint_burak/widgets/navbar%20widgets/up_navigation_bar_widget.dart';
 
 import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
@@ -23,7 +25,10 @@ class Home extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       extendBodyBehindAppBar: true,
-      appBar: TopNavigationBar(context, scaffoldKey),
+      //appBar: TopNavigationBar(context, scaffoldKey),
+      appBar: PreferredSize(
+          preferredSize: screenSize * 0.15,
+          child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       drawer: CustomDrawer(),
       body: Responsive(
         largeScreen: HomeLarge(),

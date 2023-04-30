@@ -7,6 +7,7 @@ import 'package:paint_burak/pages/about_us/about_us_small.dart';
 import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
+import '../../widgets/navbar widgets/up_navigation_bar_widget.dart';
 import 'services_large.dart';
 import 'services_small.dart';
 
@@ -21,7 +22,10 @@ class Services extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       extendBodyBehindAppBar: true,
-      appBar: TopNavigationBar(context, scaffoldKey),
+      //appBar: TopNavigationBar(context, scaffoldKey),
+      appBar: PreferredSize(
+          preferredSize: screenSize * 0.15,
+          child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       drawer: CustomDrawer(),
       body: Responsive(
         largeScreen: ServicesLarge(),

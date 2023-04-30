@@ -9,6 +9,7 @@ import '../../helpers/responsive.dart';
 import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
+import '../../widgets/navbar widgets/up_navigation_bar_widget.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({super.key});
@@ -16,9 +17,14 @@ class ContactUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       key: scaffoldKey,
-      appBar: TopNavigationBar(context, scaffoldKey),
+      //appBar: TopNavigationBar(context, scaffoldKey),
+      appBar: PreferredSize(
+          preferredSize: screenSize * 0.15,
+          child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
       body: Responsive(

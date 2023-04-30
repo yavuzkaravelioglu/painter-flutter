@@ -7,6 +7,7 @@ import 'package:paint_burak/pages/about_us/about_us_small.dart';
 import '../../widgets/navbar widgets/custom_drawer.dart';
 import '../../widgets/navbar widgets/side_navigation_bar.dart';
 import '../../widgets/navbar widgets/top_navigation_bar.dart';
+import '../../widgets/navbar widgets/up_navigation_bar_widget.dart';
 import 'about_us_large.dart';
 
 class AboutUs extends StatelessWidget {
@@ -19,7 +20,10 @@ class AboutUs extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldKey,
-      appBar: TopNavigationBar(context, scaffoldKey),
+      //appBar: TopNavigationBar(context, scaffoldKey),
+      appBar: PreferredSize(
+          preferredSize: screenSize * 0.15,
+          child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
       body: Responsive(
