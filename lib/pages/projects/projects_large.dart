@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../helpers/image_tag_duo.dart';
+import '../../widgets/image_slide_widgets/image_slide_show_with_tap.dart';
 import '../../widgets/text_widgets/font_advent_text.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
@@ -13,6 +15,18 @@ class ProjectsLarge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+
+    List<ImageTagDuo> imageList1 = [
+      ImageTagDuo(imagePath: "assets/photos/a-1.jpeg", imageTag: "a-1"),
+      ImageTagDuo(imagePath: "assets/photos/b-1.jpeg", imageTag: "b-1"),
+      ImageTagDuo(imagePath: "assets/photos/c-1.jpeg", imageTag: "c-1"),
+    ];
+
+    List<ImageTagDuo> imageList2 = [
+      ImageTagDuo(imagePath: "assets/photos/a-1.jpeg", imageTag: "a-1"),
+      ImageTagDuo(imagePath: "assets/photos/b-1.jpeg", imageTag: "b-1"),
+      ImageTagDuo(imagePath: "assets/photos/c-1.jpeg", imageTag: "c-1"),
+    ];
 
     return SingleChildScrollView(
       child: Column(
@@ -60,11 +74,39 @@ class ProjectsLarge extends StatelessWidget {
                 Container(
                   child: Column(
                     children: [
-                      ImageSlideShowWithTap(screenSize: screenSize),
-                      /* SizedBox(
-                        height: 200,
+                      FontOrbitronText(
+                        text: "Houseboat\nKeizersgracht",
+                        fontSize: 25,
+                        color: Colors.black,
+                        letterSpacing: 4,
+                        containerAlign: Alignment.topLeft,
+                        textAlign: TextAlign.left,
                       ),
-                      ImageSlideShow(screenSize: screenSize), */
+                      SizedBox(
+                        height: screenSize.height * 0.03,
+                      ),
+                      ImageSlideShowWithTap(
+                        screenSize: screenSize,
+                        imageList: imageList1,
+                      ),
+                      SizedBox(
+                        height: screenSize.height * 0.1,
+                      ),
+                      FontOrbitronText(
+                        text: "Okeghemstraat\ninterior painting",
+                        fontSize: 25,
+                        color: Colors.black,
+                        letterSpacing: 4,
+                        containerAlign: Alignment.topLeft,
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: screenSize.height * 0.03,
+                      ),
+                      ImageSlideShowWithTap(
+                        screenSize: screenSize,
+                        imageList: imageList2,
+                      ),
                     ],
                   ),
                 )
@@ -73,117 +115,6 @@ class ProjectsLarge extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class ImageSlideShowWithTap extends StatefulWidget {
-  const ImageSlideShowWithTap({
-    super.key,
-    required this.screenSize,
-  });
-
-  final Size screenSize;
-
-  @override
-  State<ImageSlideShowWithTap> createState() => _ImageSlideShowWithTapState();
-}
-
-class _ImageSlideShowWithTapState extends State<ImageSlideShowWithTap> {
-  final List<ImageProvider> _imageProviders = [
-    Image.asset(
-      'assets/photos/a-1.jpeg',
-      fit: BoxFit.cover,
-    ).image,
-  ];
-
-  late final _easyEmbeddedImageProvider = MultiImageProvider(_imageProviders);
-
-  @override
-  Widget build(BuildContext context) {
-    return ImageSlideshow(
-      height: widget.screenSize.height * 0.5,
-      indicatorColor: const Color.fromARGB(255, 114, 176, 227),
-      indicatorBackgroundColor: Colors.white,
-      autoPlayInterval: 6000,
-      isLoop: true,
-      children: [
-        GestureDetector(
-          child: Hero(
-            tag: "a-1",
-            child: Image.asset(
-              'assets/photos/a-1.jpeg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          onTap: () {
-            showImageViewer(
-                context, Image.asset('assets/photos/a-1.jpeg').image,
-                swipeDismissible: true, doubleTapZoomable: true);
-          },
-        ),
-        GestureDetector(
-          child: Hero(
-            tag: "b-1",
-            child: Image.asset(
-              'assets/photos/b-1.jpeg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          onTap: () {
-            showImageViewer(
-                context, Image.asset('assets/photos/b-1.jpeg').image,
-                swipeDismissible: true, doubleTapZoomable: true);
-          },
-        ),
-        GestureDetector(
-          child: Hero(
-            tag: "c-1",
-            child: Image.asset(
-              'assets/photos/c-1.jpeg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          onTap: () {
-            showImageViewer(
-                context, Image.asset('assets/photos/c-1.jpeg').image,
-                swipeDismissible: true, doubleTapZoomable: true);
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class ImageSlideShow extends StatelessWidget {
-  const ImageSlideShow({
-    super.key,
-    required this.screenSize,
-  });
-  final Size screenSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return ImageSlideshow(
-      height: screenSize.height * 0.5,
-      indicatorColor: const Color.fromARGB(255, 114, 176, 227),
-      indicatorBackgroundColor: Colors.white,
-      autoPlayInterval: 5000,
-      isLoop: true,
-      children: [
-        Image.asset(
-          'assets/photos/a-1.jpeg',
-          fit: BoxFit.cover,
-        ),
-        Image.asset(
-          'assets/photos/b-1.jpeg',
-          fit: BoxFit.cover,
-        ),
-        Image.asset(
-          'assets/photos/c-1.jpeg',
-          fit: BoxFit.cover,
-        ),
-      ],
     );
   }
 }
