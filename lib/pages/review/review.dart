@@ -22,10 +22,19 @@ class Review extends StatelessWidget {
       appBar: TopNavigationBar(context, scaffoldKey),
       extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
-      body: Responsive(
-        largeScreen: ReviewLarge(),
-        mediumScreen: ReviewLarge(),
-        smallScreen: AboutUsSmall(),
+      body: NotificationListener<ScrollEndNotification>(
+        onNotification: (ScrollEndNotification scroll) {
+          var metrics = scroll.metrics;
+          if (metrics.atEdge) {
+            print('top');
+          }
+          return true;
+        },
+        child: Responsive(
+          largeScreen: ReviewLarge(),
+          mediumScreen: ReviewLarge(),
+          smallScreen: AboutUsSmall(),
+        ),
       ),
     );
   }

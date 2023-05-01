@@ -18,6 +18,8 @@ class Projects extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     var screenSize = MediaQuery.of(context).size;
+    bool isTop = true;
+    double metricsPixel = 0;
 
     return Scaffold(
       key: scaffoldKey,
@@ -27,10 +29,19 @@ class Projects extends StatelessWidget {
           child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
-      body: Responsive(
-        largeScreen: ProjectsLarge(),
-        mediumScreen: ProjectsLarge(),
-        smallScreen: ProjectsSmall(),
+      body: NotificationListener<ScrollEndNotification>(
+        onNotification: (ScrollEndNotification scroll) {
+          var metrics = scroll.metrics;
+          if (metrics.atEdge) {
+            print('top');
+          }
+          return true;
+        },
+        child: Responsive(
+          largeScreen: ProjectsLarge(),
+          mediumScreen: ProjectsLarge(),
+          smallScreen: ProjectsSmall(),
+        ),
       ),
     );
   }

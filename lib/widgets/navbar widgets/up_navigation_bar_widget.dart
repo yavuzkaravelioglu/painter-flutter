@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +24,7 @@ class UpNavigationBar extends StatefulWidget {
 class _UpNavigationBarState extends State<UpNavigationBar> {
   String menuType = 'top-navbar';
   final ActiveNavbarItemController c = Get.find();
+  bool isTop = true;
 
   @override
   Widget build(BuildContext context) {

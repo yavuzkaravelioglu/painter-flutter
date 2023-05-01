@@ -19,7 +19,7 @@ class ContactUsLarge extends StatelessWidget {
             width: screenSize.width * 1,
             decoration: BoxDecoration(
               image: const DecorationImage(
-                image: AssetImage("assets/photos/d-1.jpeg"),
+                image: AssetImage("assets/photos/c-1.jpeg"),
                 colorFilter: ColorFilter.mode(Colors.black, BlendMode.dstATop),
                 opacity: 0.4,
                 fit: BoxFit.cover,

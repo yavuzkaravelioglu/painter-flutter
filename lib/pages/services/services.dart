@@ -18,6 +18,7 @@ class Services extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     var screenSize = MediaQuery.of(context).size;
+    double metricsPixel;
 
     return Scaffold(
       key: scaffoldKey,
@@ -27,10 +28,20 @@ class Services extends StatelessWidget {
           preferredSize: screenSize * 0.15,
           child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       drawer: CustomDrawer(),
-      body: Responsive(
-        largeScreen: ServicesLarge(),
-        mediumScreen: ServicesLarge(),
-        smallScreen: ServicesSmall(),
+      body: NotificationListener<ScrollEndNotification>(
+        onNotification: (ScrollEndNotification scroll) {
+          var metrics = scroll.metrics;
+
+          if (metrics.atEdge && metrics.pixels == 0) {
+            print('top');
+          }
+          return true;
+        },
+        child: Responsive(
+          largeScreen: ServicesLarge(),
+          mediumScreen: ServicesLarge(),
+          smallScreen: ServicesSmall(),
+        ),
       ),
     );
   }

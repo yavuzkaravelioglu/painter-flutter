@@ -26,10 +26,19 @@ class AboutUs extends StatelessWidget {
           child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       extendBodyBehindAppBar: true,
       drawer: CustomDrawer(),
-      body: Responsive(
-        largeScreen: AboutUsLarge(),
-        mediumScreen: AboutUsLarge(),
-        smallScreen: AboutUsSmall(),
+      body: NotificationListener<ScrollEndNotification>(
+        onNotification: (ScrollEndNotification scroll) {
+          var metrics = scroll.metrics;
+          if (metrics.atEdge) {
+            print('top');
+          }
+          return true;
+        },
+        child: Responsive(
+          largeScreen: AboutUsLarge(),
+          mediumScreen: AboutUsLarge(),
+          smallScreen: AboutUsSmall(),
+        ),
       ),
     );
   }

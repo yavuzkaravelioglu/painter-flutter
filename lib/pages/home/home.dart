@@ -30,11 +30,31 @@ class Home extends StatelessWidget {
           preferredSize: screenSize * 0.15,
           child: UpNavigationBar(scaffoldKey: scaffoldKey)),
       drawer: CustomDrawer(),
-      body: Responsive(
-        largeScreen: HomeLarge(),
-        mediumScreen: HomeLarge(),
-        smallScreen: HomeSmall(),
+      body: NotificationListener<ScrollEndNotification>(
+        onNotification: (ScrollEndNotification scroll) {
+          var metrics = scroll.metrics;
+          if (metrics.atEdge) {
+            print('top');
+          }
+          return true;
+        },
+        child: Responsive(
+          largeScreen: HomeLarge(),
+          mediumScreen: HomeLarge(),
+          smallScreen: HomeSmall(),
+        ),
       ),
+      /*NotificationListener<ScrollNotification>(
+        onNotification: (notification) {
+          print('Selam');
+          return true;
+        },
+        child: Responsive(
+          largeScreen: HomeLarge(),
+          mediumScreen: HomeLarge(),
+          smallScreen: HomeSmall(),
+        ),
+      ),*/
     );
   }
 }
