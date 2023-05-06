@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, avoid_unnecessary_containers, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, avoid_unnecessary_containers, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -129,12 +129,14 @@ class _UpNavigationBarState extends State<UpNavigationBar>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TransparentButton(
-                              40,
-                              EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              "REQUEST A QUOTE",
-                              12,
-                              Colors.white,
-                              2),
+                            height: 40,
+                            paddingValues: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            text: "REQUEST A QUOTE",
+                            size: 12,
+                            color: Colors.white,
+                            letterSpacing: 2,
+                            routeName: "CONTACT",
+                          ),
                         ],
                       ),
                     ),

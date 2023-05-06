@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:paint_burak/widgets/button_widgets/transparent_button.dart';
 import 'package:paint_burak/widgets/text_widgets/font_montserrat_text.dart';
 
+import '../../controllers/active_navbar_item_controller.dart';
+import '../../controllers/navbar_scroll_animation_controller.dart';
 import '../../widgets/animated_widgets/heart.dart';
 import '../../widgets/text_widgets/font_advent_text.dart';
 
@@ -64,8 +66,15 @@ class HomeLarge extends StatelessWidget {
   Positioned mainButton(Size screenSize) {
     return Positioned(
       top: screenSize.height * 0.65,
-      child: TransparentButton(50, EdgeInsets.fromLTRB(20, 0, 20, 0),
-          "SEE ALL PROJECTS", 13, Colors.white, 3),
+      child: TransparentButton(
+        height: 50,
+        paddingValues: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        text: "SEE ALL PROJECTS",
+        size: 13,
+        color: Colors.white,
+        letterSpacing: 3,
+        routeName: "PROJECTS",
+      ),
     );
   }
 }

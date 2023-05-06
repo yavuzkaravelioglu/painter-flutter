@@ -114,8 +114,15 @@ AppBar TopNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TransparentButton(40, EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        "REQUEST A QUOTE", 12, Colors.white, 2),
+                    TransparentButton(
+                      height: 40,
+                      paddingValues: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      text: "REQUEST A QUOTE",
+                      size: 12,
+                      color: Colors.white,
+                      letterSpacing: 2,
+                      routeName: "CONTACT",
+                    ),
                   ],
                 ),
               ),

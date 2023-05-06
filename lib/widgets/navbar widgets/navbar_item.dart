@@ -56,9 +56,9 @@ class _NavbarItemState extends State<NavbarItem> {
 
   @override
   Widget build(BuildContext context) {
-    ActiveNavbarItemController c = Get.find();
     var screenSize = MediaQuery.of(context).size;
 
+    ActiveNavbarItemController c = Get.find();
     final NavbarScrollAnimationController navbarScrollAnimationController =
         Get.find();
     AnimationController navbarAnimationController =
