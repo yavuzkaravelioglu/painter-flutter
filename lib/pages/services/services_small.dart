@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:paint_burak/widgets/text_widgets/font_advent_text.dart';
 
 import '../../widgets/shared_widgets/pantone_card.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';

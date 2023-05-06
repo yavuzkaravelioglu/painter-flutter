@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../widgets/text_widgets/font_advent_text.dart';
-
 class ReviewLarge extends StatelessWidget {
   const ReviewLarge({super.key});
 

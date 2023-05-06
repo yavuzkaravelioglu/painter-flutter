@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paint_burak/pages/contact_us/contact_us.dart';
 
 import '../../controllers/active_navbar_item_controller.dart';
-import '../../pages/about_us/about_us.dart';
-import '../animated_widgets/state_exercise.dart';
+import '../../controllers/navbar_scroll_animation_controller.dart';
 
 class NavbarItem extends StatefulWidget {
   final String navbarItemName;
@@ -31,6 +29,10 @@ class _NavbarItemState extends State<NavbarItem> {
   late Color _color1;
   late Color _color2;
 
+  final NavbarScrollAnimationController navbarScrollAnimationController =
+      Get.find();
+  late AnimationController navbarAnimationController;
+
   @override
   void initState() {
     (widget.menuType == 'side-navbar')
@@ -43,9 +45,12 @@ class _NavbarItemState extends State<NavbarItem> {
             _color2 = Colors.grey,
           }
         : {
-            _color1 = Colors.white,
-            _itemColor = Colors.white,
-            _color2 = Colors.black,
+            //_color1 = Colors.white,
+            //_itemColor = Colors.white,
+            //_color2 = Colors.black,
+            _color1 = Colors.white, //white - black
+            _itemColor = Colors.white, //white - black
+            _color2 = Colors.black, //black - white
           };
   }
 
@@ -54,41 +59,56 @@ class _NavbarItemState extends State<NavbarItem> {
     ActiveNavbarItemController c = Get.find();
     var screenSize = MediaQuery.of(context).size;
 
-    return InkWell(
-      onTap: () {
-        context.goNamed(widget.navbarItemName);
-        c.updateActiveItemName(widget.navbarItemName);
-      },
-      onHover: (value) {
-        setState(() {
-          value ? isHover = true : isHover = false;
-          (isHover == true && widget.navbarItemName != c.activeItemName.value)
-              ? _itemColor = _color2
-              : _itemColor = _color1;
-        });
-      },
-      hoverColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      child: Obx(
-        () => FittedBox(
-          fit: BoxFit.cover,
-          child: Text(
-            menuItemText,
-            style: GoogleFonts.montserrat(
-              textStyle: TextStyle(
-                //fontSize: screenSize.width * 0.01,
-                fontSize: 12,
-                letterSpacing: 2,
-                color: _itemColor,
-                fontWeight: (c.activeItemName.value == widget.navbarItemName)
-                    ? _fontWeight = FontWeight.bold
-                    : _fontWeight = FontWeight.normal,
+    final NavbarScrollAnimationController navbarScrollAnimationController =
+        Get.find();
+    AnimationController navbarAnimationController =
+        navbarScrollAnimationController.getAnimationController();
+    Animation textColorAnimation =
+        navbarScrollAnimationController.getTextColorAnimation();
+
+    return AnimatedBuilder(
+      animation: navbarScrollAnimationController,
+      builder: (BuildContext context, _) {
+        return InkWell(
+          onTap: () {
+            context.goNamed(widget.navbarItemName);
+            c.updateActiveItemName(widget.navbarItemName);
+            navbarAnimationController.reverse();
+          },
+          onHover: (value) {
+            setState(() {
+              value ? isHover = true : isHover = false;
+              (isHover == true &&
+                      widget.navbarItemName != c.activeItemName.value)
+                  ? _color2 //getHoverColorAnimation.value //_color2
+                  : _color1; //getTextColorAnimation.value; //_color1;
+            });
+          },
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          child: Obx(
+            () => FittedBox(
+              fit: BoxFit.cover,
+              child: Text(
+                menuItemText,
+                style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
+                    //fontSize: screenSize.width * 0.01,
+                    fontSize: 12,
+                    letterSpacing: 2,
+                    color: _itemColor, //_itemColor, //textColorAnimation.value;
+                    fontWeight:
+                        (c.activeItemName.value == widget.navbarItemName)
+                            ? _fontWeight = FontWeight.bold
+                            : _fontWeight = FontWeight.normal,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

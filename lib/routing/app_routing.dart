@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:paint_burak/pages/services/services.dart';
-import '../pages/review/review.dart';
 import 'app_routes.dart';
 import '../pages/about_us/about_us.dart';
 import '../pages/projects/projects.dart';

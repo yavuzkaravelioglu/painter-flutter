@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../helpers/image_tag_duo.dart';
 import '../../widgets/image_slide_widgets/image_slide_show_with_tap.dart';
-import '../../widgets/text_widgets/font_advent_text.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:easy_image_viewer/easy_image_viewer.dart';
 
 class ProjectsLarge extends StatelessWidget {
   const ProjectsLarge({super.key});
@@ -92,7 +89,7 @@ class ProjectsLarge extends StatelessWidget {
                           height: screenSize.height * 0.03,
                         ),
                         ImageSlideShowWithTap(
-                          screenSize: screenSize,
+                          sliderHeight: screenSize.height,
                           imageList: imageList1,
                         ),
                         SizedBox(
@@ -110,7 +107,7 @@ class ProjectsLarge extends StatelessWidget {
                           height: screenSize.height * 0.03,
                         ),
                         ImageSlideShowWithTap(
-                          screenSize: screenSize,
+                          sliderHeight: screenSize.height,
                           imageList: imageList2,
                         ),
                       ],

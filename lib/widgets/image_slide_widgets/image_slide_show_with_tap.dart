@@ -7,11 +7,11 @@ import '../../helpers/image_tag_duo.dart';
 class ImageSlideShowWithTap extends StatefulWidget {
   const ImageSlideShowWithTap({
     super.key,
-    required this.screenSize,
+    required this.sliderHeight,
     required this.imageList,
   });
 
-  final Size screenSize;
+  final double sliderHeight;
   final List<ImageTagDuo> imageList;
 
   @override
@@ -24,10 +24,10 @@ class _ImageSlideShowWithTapState extends State<ImageSlideShowWithTap> {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: ImageSlideshow(
-        height: widget.screenSize.height * 0.5,
+        height: widget.sliderHeight * 0.5,
         indicatorColor: const Color.fromARGB(255, 114, 176, 227),
         indicatorBackgroundColor: Colors.white,
-        autoPlayInterval: 6000,
+        //autoPlayInterval: 6000,
         isLoop: true,
         children: [
           GestureDetector(

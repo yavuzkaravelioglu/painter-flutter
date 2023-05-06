@@ -1,7 +1,3 @@
-import '../pages/about_us/about_us.dart';
-import '../pages/contact_us/contact_us.dart';
-import '../pages/home/home.dart';
-
 const HomePageName = "HOME";
 const HomePageRoute = "/";
 

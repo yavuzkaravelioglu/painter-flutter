@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:paint_burak/widgets/text_widgets/font_advent_text.dart';
 
+import '../../helpers/image_tag_duo.dart';
+import '../../widgets/image_slide_widgets/image_slide_show_with_tap.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
 
 class ProjectsSmall extends StatelessWidget {
@@ -11,6 +12,19 @@ class ProjectsSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+
+    List<ImageTagDuo> imageList1 = [
+      ImageTagDuo(imagePath: "assets/photos/a-1.jpeg", imageTag: "a-1"),
+      ImageTagDuo(imagePath: "assets/photos/b-1.jpeg", imageTag: "b-1"),
+      ImageTagDuo(imagePath: "assets/photos/c-1.jpeg", imageTag: "c-1"),
+    ];
+
+    List<ImageTagDuo> imageList2 = [
+      ImageTagDuo(imagePath: "assets/photos/a-1.jpeg", imageTag: "a-2"),
+      ImageTagDuo(imagePath: "assets/photos/b-1.jpeg", imageTag: "b-2"),
+      ImageTagDuo(imagePath: "assets/photos/c-1.jpeg", imageTag: "c-2"),
+    ];
+
     return ListView(
       padding: EdgeInsets.only(top: 0),
       children: [
@@ -57,6 +71,45 @@ class ProjectsSmall extends StatelessWidget {
                   SizedBox(
                     height: screenSize.height * 0.06,
                   ),
+                  Container(
+                    child: Column(
+                      children: [
+                        FontOrbitronText(
+                          text: "Houseboat\nKeizersgracht",
+                          fontSize: 18,
+                          color: Colors.black,
+                          letterSpacing: 4,
+                          containerAlign: Alignment.topLeft,
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: screenSize.height * 0.03,
+                        ),
+                        ImageSlideShowWithTap(
+                          sliderHeight: screenSize.height * 0.6,
+                          imageList: imageList1,
+                        ),
+                        SizedBox(
+                          height: screenSize.height * 0.1,
+                        ),
+                        FontOrbitronText(
+                          text: "Okeghemstraat\ninterior painting",
+                          fontSize: 18,
+                          color: Colors.black,
+                          letterSpacing: 4,
+                          containerAlign: Alignment.topLeft,
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: screenSize.height * 0.03,
+                        ),
+                        ImageSlideShowWithTap(
+                          sliderHeight: screenSize.height * 0.6,
+                          imageList: imageList2,
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

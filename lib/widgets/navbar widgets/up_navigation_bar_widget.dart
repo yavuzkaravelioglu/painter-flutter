@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, avoid_unnecessary_containers, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paint_burak/controllers/navbar_scroll_animation_controller.dart';
 
 import '../../constants/logos.dart';
 import '../../controllers/active_navbar_item_controller.dart';
@@ -21,161 +22,137 @@ class UpNavigationBar extends StatefulWidget {
   State<UpNavigationBar> createState() => _UpNavigationBarState();
 }
 
-class _UpNavigationBarState extends State<UpNavigationBar> {
+class _UpNavigationBarState extends State<UpNavigationBar>
+    with SingleTickerProviderStateMixin {
   String menuType = 'top-navbar';
-  final ActiveNavbarItemController c = Get.find();
   bool isTop = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
-    return AppBar(
-      toolbarHeight: screenSize.height * 0.15,
-      elevation: 0.0,
-      backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
-      //backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      leading: (Responsive.isSmallScreen(context))
-          ? IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                widget.scaffoldKey.currentState?.openDrawer();
-              },
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-            )
-          : Container(),
-      /*Row(
-            children: [
-              SizedBox(
-                width: screenSize.width * 0.04,
-              ),
-              LogoContainer(context),
-            ],
-          ),*/
-      leadingWidth: (Responsive.isSmallScreen(context)) ? 56 : 0,
-      title: Responsive.isSmallScreen(context)
-          ? LogoText(context, c, 40, 200, Colors.white)
+    final ActiveNavbarItemController c = Get.find();
+    final NavbarScrollAnimationController navbarScrollAnimationController =
+        Get.find();
+    AnimationController navbarAnimationController =
+        navbarScrollAnimationController.getAnimationController();
+    Animation backgroundColorAnimation =
+        navbarScrollAnimationController.getBackgroundColorAnimation();
 
-          //LogoContainer(context, c, key)
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      NavbarItem(
-                        navbarItemName: AppRouting.menuItems[1].pageName,
-                        menuType: menuType,
-                      ),
-                      SizedBox(
-                        width: screenSize.width * 0.02,
-                      ),
-                      NavbarItem(
-                        navbarItemName: AppRouting.menuItems[2].pageName,
-                        menuType: menuType,
-                      ),
-                      SizedBox(
-                        width: screenSize.width * 0.02,
-                      ),
-                      NavbarItem(
-                        navbarItemName: AppRouting.menuItems[3].pageName,
-                        menuType: menuType,
-                      ),
-                      SizedBox(
-                        width: screenSize.width * 0.025,
-                      ),
-                    ],
+    return AnimatedBuilder(
+      animation: navbarAnimationController,
+      builder: (BuildContext context, _) {
+        return AppBar(
+          toolbarHeight: screenSize.height * 0.15,
+          elevation: 0.0,
+          backgroundColor: backgroundColorAnimation.value,
+          //backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+          leading: (Responsive.isSmallScreen(context))
+              ? IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.white,
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: LogoText(context, c, 45, 300, Colors.white),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: screenSize.width * 0.025,
-                      ),
-                      NavbarItem(
-                        navbarItemName: AppRouting.menuItems[4].pageName,
-                        menuType: menuType,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TransparentButton(40, EdgeInsets.fromLTRB(10, 0, 10, 0),
-                          "REQUEST A QUOTE", 12, Colors.white, 2),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-      actions: <Widget>[],
-      /*!(Responsive.isSmallScreen(context))
-        ? [
-            SizedBox(
-              width: screenSize.width * 0.4,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: AppRouting.menuItems
-                    .map(
-                      (e) => Row(
+                  onPressed: () {
+                    widget.scaffoldKey.currentState?.openDrawer();
+                  },
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                )
+              : Container(),
+
+          leadingWidth: (Responsive.isSmallScreen(context)) ? 56 : 0,
+          title: Responsive.isSmallScreen(context)
+              ? LogoText(
+                  context, navbarAnimationController, c, 40, 200, Colors.white)
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           NavbarItem(
-                            navbarItemName: e.pageName,
+                            navbarItemName: AppRouting.menuItems[1].pageName,
                             menuType: menuType,
                           ),
                           SizedBox(
                             width: screenSize.width * 0.02,
-                          )
+                          ),
+                          NavbarItem(
+                            navbarItemName: AppRouting.menuItems[2].pageName,
+                            menuType: menuType,
+                          ),
+                          SizedBox(
+                            width: screenSize.width * 0.02,
+                          ),
+                          NavbarItem(
+                            navbarItemName: AppRouting.menuItems[3].pageName,
+                            menuType: menuType,
+                          ),
+                          SizedBox(
+                            width: screenSize.width * 0.025,
+                          ),
                         ],
                       ),
-                    )
-                    .toList(),
-              ),
-            ),
-            //StateExercise(),
-          ]
-        : <Widget>[],
-    //backgroundColor: Colors.grey[300],*/
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: LogoText(context, navbarAnimationController, c, 45,
+                          300, Colors.white),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: screenSize.width * 0.025,
+                          ),
+                          NavbarItem(
+                            navbarItemName: AppRouting.menuItems[4].pageName,
+                            menuType: menuType,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TransparentButton(
+                              40,
+                              EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              "REQUEST A QUOTE",
+                              12,
+                              Colors.white,
+                              2),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+          actions: <Widget>[],
+        );
+      },
     );
   }
 
-  Container LogoContainer(BuildContext context, ActiveNavbarItemController c,
-      GlobalKey<ScaffoldState> key) {
-    return Container(
-      //padding: EdgeInsets.only(left: 10),
-      child: IconButton(
-        icon: Image.asset(Logo),
-        iconSize: 60,
-        onPressed: () {
-          context.goNamed(HomePageName);
-          c.updateActiveItemName(HomePageName);
-        },
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        splashColor: Colors.transparent,
-      ),
-    );
-  }
-
-  Container LogoText(BuildContext context, ActiveNavbarItemController c,
-      double fontSize, double height, Color color) {
+  Container LogoText(
+      BuildContext context,
+      AnimationController navbarAnimationController,
+      ActiveNavbarItemController c,
+      double fontSize,
+      double height,
+      Color color) {
     return Container(
       //padding: EdgeInsets.only(left: 10),
       child: InkWell(
@@ -188,7 +165,25 @@ class _UpNavigationBarState extends State<UpNavigationBar> {
           ),
         ),
         onTap: () {
-          print("Logo Pressed");
+          context.goNamed(HomePageName);
+          c.updateActiveItemName(HomePageName);
+          navbarAnimationController.reverse();
+        },
+        hoverColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+      ),
+    );
+  }
+
+  Container LogoContainer(BuildContext context, ActiveNavbarItemController c,
+      GlobalKey<ScaffoldState> key) {
+    return Container(
+      //padding: EdgeInsets.only(left: 10),
+      child: IconButton(
+        icon: Image.asset(Logo),
+        iconSize: 60,
+        onPressed: () {
           context.goNamed(HomePageName);
           c.updateActiveItemName(HomePageName);
         },

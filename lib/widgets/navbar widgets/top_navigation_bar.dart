@@ -3,17 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:paint_burak/routing/app_routes.dart';
-import 'package:paint_burak/widgets/text_widgets/font_montserrat_text.dart';
-import 'package:paint_burak/widgets/text_widgets/font_orbitron_text.dart';
-import 'package:paint_burak/widgets/text_widgets/font_advent_text.dart';
 
 import '../../constants/logos.dart';
 import '../../controllers/active_navbar_item_controller.dart';
 import '../../helpers/responsive.dart';
 import '../../routing/app_routing.dart';
-import '../animated_widgets/state_exercise.dart';
 import '../button_widgets/transparent_button.dart';
 import 'navbar_item.dart';
 

@@ -3,10 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:paint_burak/widgets/text_widgets/font_orbitron_text.dart';
 
-import '../../widgets/button_widgets/transparent_button.dart';
 import '../../widgets/shared_widgets/pantone_card.dart';
-import '../../widgets/text_widgets/font_advent_text.dart';
-import '../../widgets/text_widgets/font_montserrat_text.dart';
 
 class ServicesLarge extends StatelessWidget {
   const ServicesLarge({super.key});

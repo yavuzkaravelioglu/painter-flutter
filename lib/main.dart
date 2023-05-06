@@ -3,18 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:paint_burak/routing/app_routing.dart';
 
 import 'controllers/active_navbar_item_controller.dart';
-import 'pages/about_us/about_us.dart';
-import 'pages/contact_us/contact_us.dart';
-import 'pages/home/home.dart';
-import 'routing/app_routes.dart';
+import 'controllers/navbar_scroll_animation_controller.dart';
 import 'routing/go_router.dart';
 
 void main() {
   final ActiveNavbarItemController activeNavbarItemController =
       Get.put(ActiveNavbarItemController());
+  final NavbarScrollAnimationController navbarScrollAnimationController =
+      Get.put(NavbarScrollAnimationController());
   runApp(const MyApp());
 }
 
