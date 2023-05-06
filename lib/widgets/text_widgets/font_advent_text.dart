@@ -11,6 +11,7 @@ class FontAdventText extends StatelessWidget {
   final double? letterSpacing;
   final textAlign;
   final containerAlign;
+  final FontWeight? fontWeight;
 
   const FontAdventText({
     super.key,
@@ -21,6 +22,7 @@ class FontAdventText extends StatelessWidget {
     this.letterSpacing,
     this.textAlign,
     this.containerAlign,
+    this.fontWeight,
   });
 
   @override
@@ -39,6 +41,7 @@ class FontAdventText extends StatelessWidget {
           textStyle: TextStyle(
             color: color,
             fontSize: fontSize,
+            fontWeight: fontWeight,
             letterSpacing: letterSpacing,
           ),
         ),
