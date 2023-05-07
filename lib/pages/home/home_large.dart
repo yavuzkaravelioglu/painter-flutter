@@ -9,6 +9,8 @@ import 'package:paint_burak/widgets/text_widgets/font_montserrat_text.dart';
 import '../../controllers/active_navbar_item_controller.dart';
 import '../../controllers/navbar_scroll_animation_controller.dart';
 import '../../widgets/animated_widgets/heart.dart';
+import '../../widgets/navbar widgets/bottom_navigation_bar_custom.dart';
+import '../../widgets/shared_widgets/make_appointment.dart';
 import '../../widgets/text_widgets/font_advent_text.dart';
 
 class HomeLarge extends StatelessWidget {
@@ -43,6 +45,28 @@ class HomeLarge extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          SizedBox(
+            height: screenSize.height * 0.08,
+          ),
+          SizedBox(
+            width: screenSize.width * 1,
+            child: MakeAppointment(
+              screenSize: screenSize,
+              height: screenSize.height * 0.6,
+              fontSize1: 40,
+              fontSize2: 20,
+            ),
+          ),
+          BottomNavigationBarCustom(
+            screenSize: screenSize,
+            width: screenSize.width * 1,
+            height: screenSize.height * 0.6,
+            fontSize: 20,
+            bottomLogoPadding: 100,
+            containerPadding: 100,
+            textPadding: 7,
+            logoSize: 45,
           ),
         ],
       ),

@@ -5,6 +5,8 @@ import 'package:paint_burak/pages/about_us/about_us.dart';
 
 import '../../widgets/form_widget/custom_form.dart';
 import '../../widgets/form_widget/firm_info.dart';
+import '../../widgets/navbar widgets/bottom_navigation_bar_custom.dart';
+import '../../widgets/shared_widgets/make_appointment.dart';
 import '../../widgets/text_widgets/font_advent_text.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
 
@@ -59,6 +61,19 @@ class ContactUsSmall extends StatelessWidget {
                 CustomForm(),
               ],
             ),
+          ),
+          SizedBox(
+            height: screenSize.height * 0.08,
+          ),
+          BottomNavigationBarCustom(
+            screenSize: screenSize,
+            width: screenSize.width * 1,
+            height: screenSize.height * 0.45,
+            fontSize: 12,
+            bottomLogoPadding: 30,
+            containerPadding: 40,
+            textPadding: 2,
+            logoSize: 25,
           ),
         ],
       ),

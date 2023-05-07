@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:paint_burak/widgets/navbar%20widgets/bottom_navigation_bar_custom.dart';
 
 import '../../helpers/image_tag_duo.dart';
 import '../../widgets/image_slide_widgets/image_slide_show_with_tap.dart';
+import '../../widgets/shared_widgets/make_appointment.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
 
 class ProjectsLarge extends StatelessWidget {
@@ -49,7 +51,7 @@ class ProjectsLarge extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.symmetric(
                 vertical: screenSize.height * 0.05,
-                horizontal: screenSize.width * 0.2,
+                horizontal: screenSize.width * 0.1,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +117,29 @@ class ProjectsLarge extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
+            SizedBox(
+              height: screenSize.height * 0.08,
+            ),
+            SizedBox(
+              width: screenSize.width * 1,
+              child: MakeAppointment(
+                screenSize: screenSize,
+                height: screenSize.height * 0.6,
+                fontSize1: 40,
+                fontSize2: 20,
+              ),
+            ),
+            BottomNavigationBarCustom(
+              screenSize: screenSize,
+              width: screenSize.width * 1,
+              height: screenSize.height * 0.6,
+              fontSize: 20,
+              bottomLogoPadding: 100,
+              containerPadding: 100,
+              textPadding: 7,
+              logoSize: 45,
+            ),
           ],
         ),
       ],

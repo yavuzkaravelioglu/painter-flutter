@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:paint_burak/widgets/navbar%20widgets/bottom_navigation_bar_custom.dart';
+import 'package:paint_burak/widgets/shared_widgets/make_appointment.dart';
 import 'package:paint_burak/widgets/text_widgets/font_montserrat_text.dart';
 
 import '../../constants/about_us_texts.dart';
@@ -53,9 +55,9 @@ class AboutUsLarge extends StatelessWidget {
                   height: screenSize.height * 0.08,
                 ),
                 AboutUsPhoto(
-                  screenSize: screenSize,
                   imagePath: "assets/photos/about-us-1.jpeg",
                   bigImage: true,
+                  imageHeight: screenSize.height * 0.3,
                 ),
                 SizedBox(
                   height: screenSize.height * 0.08,
@@ -63,23 +65,35 @@ class AboutUsLarge extends StatelessWidget {
                 AboutUsText(
                   text1: au_leading1,
                   text2: au_exp_1,
+                  fontSize1: 23,
+                  fontSize2: 15,
+                  padding: 30,
                 ),
                 AboutUsText(
                   text1: au_leading2,
                   text2: au_exp_2,
+                  fontSize1: 23,
+                  fontSize2: 15,
+                  padding: 30,
                 ),
                 AboutUsPhoto(
-                  screenSize: screenSize,
                   imagePath: "assets/photos/about-us-2.jpeg",
                   bigImage: false,
+                  imageHeight: screenSize.height * 0.5,
                 ),
                 AboutUsText(
                   text1: au_leading3,
                   text2: au_exp_3,
+                  fontSize1: 23,
+                  fontSize2: 15,
+                  padding: 30,
                 ),
                 AboutUsText(
                   text1: au_leading4,
                   text2: au_exp_4,
+                  fontSize1: 23,
+                  fontSize2: 15,
+                  padding: 30,
                 ),
                 SizedBox(
                   height: screenSize.height * 0.08,
@@ -101,6 +115,10 @@ class AboutUsLarge extends StatelessWidget {
                       child: CustomerReviewCard(
                         customerExperience: CustomerExperienceList[0],
                         screenSize: screenSize,
+                        cardWidth: screenSize.width / 3,
+                        cardHeight: screenSize.height * 0.5,
+                        fontSize1: screenSize.width * 0.02,
+                        fontSize2: screenSize.width * 0.012,
                       ),
                     ),
                     Expanded(
@@ -108,6 +126,10 @@ class AboutUsLarge extends StatelessWidget {
                       child: CustomerReviewCard(
                         customerExperience: CustomerExperienceList[1],
                         screenSize: screenSize,
+                        cardWidth: screenSize.width / 3,
+                        cardHeight: screenSize.height * 0.5,
+                        fontSize1: screenSize.width * 0.02,
+                        fontSize2: screenSize.width * 0.012,
                       ),
                     ),
                     Expanded(
@@ -115,12 +137,16 @@ class AboutUsLarge extends StatelessWidget {
                       child: CustomerReviewCard(
                         customerExperience: CustomerExperienceList[2],
                         screenSize: screenSize,
+                        cardWidth: screenSize.width / 3,
+                        cardHeight: screenSize.height * 0.5,
+                        fontSize1: screenSize.width * 0.02,
+                        fontSize2: screenSize.width * 0.012,
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: screenSize.height * 0.04,
+                  height: screenSize.height * 0.08,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,6 +175,28 @@ class AboutUsLarge extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: screenSize.height * 0.08,
+          ),
+          SizedBox(
+            width: screenSize.width * 1,
+            child: MakeAppointment(
+              screenSize: screenSize,
+              height: screenSize.height * 0.6,
+              fontSize1: 40,
+              fontSize2: 20,
+            ),
+          ),
+          BottomNavigationBarCustom(
+            screenSize: screenSize,
+            width: screenSize.width * 1,
+            height: screenSize.height * 0.6,
+            fontSize: 20,
+            bottomLogoPadding: 100,
+            containerPadding: 100,
+            textPadding: 7,
+            logoSize: 45,
           ),
         ],
       ),

@@ -17,31 +17,41 @@ class WorkOrder extends StatelessWidget {
     return Column(
       children: [
         for (var i = 1; i < workOrderCount + 1; i++)
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: FontAdventText(
-                    text: i.toString(),
-                    fontSize: 25,
-                    color: Colors.cyan,
-                  ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.symmetric(
+                horizontal: BorderSide(
+                  width: 0.5,
+                  color: const Color.fromARGB(97, 158, 158, 158),
                 ),
               ),
-              Expanded(
-                flex: 9,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: FontAdventText(
-                    text: workOrderList[i - 1].toString(),
-                    fontSize: 20,
-                    color: const Color.fromARGB(255, 75, 75, 75),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: FontAdventText(
+                      text: i.toString(),
+                      fontSize: 25,
+                      color: Colors.cyan,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 9,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: FontAdventText(
+                      text: workOrderList[i - 1].toString(),
+                      fontSize: 20,
+                      color: const Color.fromARGB(255, 75, 75, 75),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           )
       ],
     );

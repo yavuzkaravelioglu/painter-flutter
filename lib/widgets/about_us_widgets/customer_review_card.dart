@@ -11,10 +11,18 @@ class CustomerReviewCard extends StatelessWidget {
   const CustomerReviewCard({
     super.key,
     required this.screenSize,
+    required this.cardWidth,
+    required this.cardHeight,
+    required this.fontSize1,
+    required this.fontSize2,
     required this.customerExperience,
   });
 
   final Size screenSize;
+  final double cardWidth;
+  final double cardHeight;
+  final double fontSize1;
+  final double fontSize2;
   final CustomerExperience customerExperience;
 
   @override
@@ -30,12 +38,12 @@ class CustomerReviewCard extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(1)),
         ),
         child: SizedBox(
-          width: screenSize.width / 3,
-          height: screenSize.height * 0.5,
+          width: cardWidth,
+          height: cardHeight,
           child: Padding(
             padding: EdgeInsets.only(
               left: 20,
-              top: 30,
+              top: screenSize.height * 0.02,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -52,11 +60,11 @@ class CustomerReviewCard extends StatelessWidget {
                 ),
                 FontOrbitronText(
                   text: customerExperience.header,
-                  fontSize: 25,
+                  fontSize: fontSize1, // screenSize.width * 0.02,
                   color: Colors.black,
                 ),
                 SizedBox(
-                  height: screenSize.height * 0.02,
+                  height: screenSize.height * 0.022,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -64,7 +72,7 @@ class CustomerReviewCard extends StatelessWidget {
                   ),
                   child: FontMontserratText(
                     text: customerExperience.comment,
-                    fontSize: 15,
+                    fontSize: fontSize2, // screenSize.width * 0.012,
                     color: Colors.grey,
                   ),
                 ),

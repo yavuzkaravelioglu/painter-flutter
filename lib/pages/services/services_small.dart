@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../widgets/navbar widgets/bottom_navigation_bar_custom.dart';
+import '../../widgets/shared_widgets/make_appointment.dart';
 import '../../widgets/shared_widgets/pantone_card.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
 
@@ -122,7 +124,29 @@ class ServicesSmall extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: screenSize.height * 0.08,
+          ),
+          SizedBox(
+            width: screenSize.width * 1,
+            child: MakeAppointment(
+              screenSize: screenSize,
+              height: screenSize.height * 0.4,
+              fontSize1: 25,
+              fontSize2: 15,
+            ),
+          ),
+          BottomNavigationBarCustom(
+            screenSize: screenSize,
+            width: screenSize.width * 1,
+            height: screenSize.height * 0.45,
+            fontSize: 12,
+            bottomLogoPadding: 30,
+            containerPadding: 40,
+            textPadding: 2,
+            logoSize: 25,
+          ),
         ],
       ),
     );

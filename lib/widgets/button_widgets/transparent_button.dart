@@ -12,6 +12,7 @@ class TransparentButton extends StatefulWidget {
   const TransparentButton({
     super.key,
     required this.height,
+    this.width,
     required this.paddingValues,
     required this.text,
     required this.size,
@@ -21,6 +22,7 @@ class TransparentButton extends StatefulWidget {
   });
 
   final double height;
+  final double? width;
   final EdgeInsets paddingValues;
   final String text;
   final double size;
@@ -45,6 +47,7 @@ class _TransparentButtonState extends State<TransparentButton> {
 
     return Container(
       height: widget.height,
+      width: widget.width,
       //padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
       decoration: BoxDecoration(
           border: Border.all(
@@ -52,6 +55,7 @@ class _TransparentButtonState extends State<TransparentButton> {
         color: Colors.white,
       )),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           InkWell(
             onTap: () {

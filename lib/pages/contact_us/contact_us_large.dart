@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/form_widget/custom_form.dart';
 import '../../widgets/form_widget/firm_info.dart';
+import '../../widgets/navbar widgets/bottom_navigation_bar_custom.dart';
+import '../../widgets/shared_widgets/make_appointment.dart';
 import '../../widgets/text_widgets/font_advent_text.dart';
 import '../../widgets/text_widgets/font_orbitron_text.dart';
 
@@ -67,6 +69,19 @@ class ContactUsLarge extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: screenSize.height * 0.08,
+          ),
+          BottomNavigationBarCustom(
+            screenSize: screenSize,
+            width: screenSize.width * 1,
+            height: screenSize.height * 0.6,
+            fontSize: 20,
+            bottomLogoPadding: 100,
+            containerPadding: 100,
+            textPadding: 7,
+            logoSize: 45,
           ),
         ],
       ),

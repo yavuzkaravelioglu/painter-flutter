@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class AboutUsPhoto extends StatelessWidget {
   const AboutUsPhoto({
     super.key,
-    required this.screenSize,
+    required this.imageHeight,
     required this.imagePath,
     required this.bigImage,
   });
 
-  final Size screenSize;
+  final double imageHeight;
   final String imagePath;
   final bool bigImage;
 
@@ -39,7 +39,7 @@ class AboutUsPhoto extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Container(
-              height: screenSize.height * 0.5,
+              height: imageHeight,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(imagePath),

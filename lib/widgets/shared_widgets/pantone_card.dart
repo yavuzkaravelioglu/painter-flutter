@@ -39,8 +39,8 @@ class PantoneCard extends StatelessWidget {
           FittedBox(
             fit: BoxFit.cover,
             child: Container(
-              height: 180,
-              width: 250,
+              height: 220,
+              width: 350,
               //padding: EdgeInsets.all(3),
               color: color,
             ),
@@ -52,7 +52,7 @@ class PantoneCard extends StatelessWidget {
             fit: BoxFit.cover,
             child: FontOrbitronText(
               text: textHead,
-              fontSize: (fontSize == 0) ? screenWidth * 0.011 : fontSize,
+              fontSize: (fontSize == 0) ? screenWidth * 0.015 : fontSize,
               color: Colors.black,
               letterSpacing: 2,
               containerAlign: Alignment.topLeft,
