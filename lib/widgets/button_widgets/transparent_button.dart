@@ -52,7 +52,7 @@ class _TransparentButtonState extends State<TransparentButton> {
       decoration: BoxDecoration(
           border: Border.all(
         width: 1,
-        color: Colors.white,
+        color: widget.color,
       )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
